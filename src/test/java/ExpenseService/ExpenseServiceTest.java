@@ -58,10 +58,21 @@ class ExpenseServiceTest {
     	assertEquals(ExpenseType.OTHER_EXPENSE,result);
     }
 //
-//    @Test
-//    void should_throw_unexpected_project_exception_if_project_is_invalid() {
-//        // given
-//        // when
-//        // then
-//    }
+    @Test
+    void should_throw_unexpected_project_exception_if_project_is_invalid()  {
+        // given
+    	Project project =	new Project(ProjectType.UNEXPECTED_PROJECT_TYPE,"test");
+    	ExpenseService expenseService = new ExpenseService();
+        // when
+    	ExpenseType result;
+		try {
+			result = expenseService.getExpenseCodeByProjectTypeAndName(project);
+		} catch (UnexpectedProjectTypeException e) {
+			// TODO Auto-generated catch block
+//			e.printStackTrace();
+			assertEquals("You enter invalid project type",e.getMessage());
+		}
+        // then
+    	
+    }
 }
